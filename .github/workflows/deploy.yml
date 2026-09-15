@@ -2,9 +2,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   deploy:
@@ -29,9 +26,5 @@ jobs:
         run: npm run build
 
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v3
-        with:
-          artifact_name: github-pages
-          static_directory: dist
-        env:
-          GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
