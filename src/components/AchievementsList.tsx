@@ -1,20 +1,55 @@
 import { Box, Grid, GridItem, Heading, Text, Button } from '@chakra-ui/react';
 import type { Achievement } from '../types/achievements';
-import { BadgeStatus } from './BadgeStatus';
 
-const getIcon = (title: string) => {
-  if (title.includes('Первый')) return '🟢';
-  if (title.includes('Точно')) return '🔵';
-  if (title.includes('Командный')) return '🟣';
-  if (title.includes('Знак')) return '🟠';
-  if (title.includes('Генератор')) return '🟡';
-  if (title.includes('Стартовый')) return '🔴';
+const StatusBadge = ({ status }: { status: Achievement['status'] }) => {
+  let bgColor, textColor, label;
+  
+  switch (status) {
+    case 'active':
+      bgColor = 'green.50';
+      textColor = 'green.700';
+      label = 'Активна';
+      break;
+    case 'draft':
+      bgColor = 'yellow.50';
+      textColor = 'yellow.700';
+      label = 'Черновик';
+      break;
+    case 'archived':
+    default:
+      bgColor = 'gray.50';
+      textColor = 'gray.700';
+      label = 'Архив';
+  }
+
+  return (
+    <Box 
+      px={3} py={1} 
+      rounded="full" 
+      fontSize="xs" 
+      fontWeight="bold"
+      textTransform="uppercase"
+      letterSpacing="wide"
+      bg={bgColor}
+      color={textColor}
+      border={`1px solid ${textColor}`}
+    >
+      {label}
+    </Box>
+  );
+};
+
+const getIcon = (name?: string) => {
+  if (!name) return '⭐';
+  const n = name.toLowerCase();
+  if (n.includes('первый')) return '🟢';
+  if (n.includes('точно')) return '🔵';
   return '⭐';
 };
 
 interface AchievementsListProps {
-  achievements: Achievement[] | null;
-  onIssue: (id: string | number) => void;
+  achievements: Achievement[];
+  onIssue: (achievement: Achievement) => void;
 }
 
 export const AchievementsList = ({ achievements, onIssue }: AchievementsListProps) => {
@@ -28,7 +63,7 @@ export const AchievementsList = ({ achievements, onIssue }: AchievementsListProp
 
   return (
     <Box bg="white" border="1px" borderColor="gray.200" borderRadius="lg" boxShadow="sm" overflow="hidden">
-      {/* Заголовок таблицы */}
+      {/* Шапка таблицы */}
       <Grid
         templateColumns="repeat(5, 1fr)"
         bg="gray.50"
@@ -38,16 +73,16 @@ export const AchievementsList = ({ achievements, onIssue }: AchievementsListProp
         textTransform="uppercase"
         fontSize="xs"
         fontWeight="bold"
-        color="gray.500"
+        color="gray.600"
       >
-        <GridItem>Изображение</GridItem>
+        <GridItem>Иконка</GridItem>
         <GridItem>Название</GridItem>
         <GridItem>Описание</GridItem>
         <GridItem textAlign="center">Статус</GridItem>
         <GridItem textAlign="right">Действия</GridItem>
       </Grid>
 
-      {/* Строки */}
+      {/* Строки таблицы */}
       <Box>
         {achievements.map((ach) => (
           <Grid
@@ -56,8 +91,10 @@ export const AchievementsList = ({ achievements, onIssue }: AchievementsListProp
             p={4}
             _hover={{ bg: 'gray.50' }}
             transition="background 0.2s"
+            borderBottom="1px"
+            borderColor="gray.100"
           >
-            {/* Иконка */}
+            {/* Колонка 1: Иконка */}
             <GridItem display="flex" alignItems="center" justifyContent="center">
               <Box
                 w="10"
@@ -70,33 +107,50 @@ export const AchievementsList = ({ achievements, onIssue }: AchievementsListProp
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
+                color={ach.iconColor}
               >
-                {getIcon(ach.title)}
+                {getIcon(ach.name)}
               </Box>
             </GridItem>
 
-            {/* Название */}
+            {/* Колонка 2: Название */}
             <GridItem display="flex" alignItems="center">
-              <Heading size="sm" color="gray.900" fontWeight="semibold">
-                {ach.title}
+              <Heading 
+                size="sm" 
+                color="gray.900" 
+                fontWeight="semibold"
+                lineHeight="1.3"
+                w="100%"
+              >
+                {ach.name}
               </Heading>
             </GridItem>
 
-            {/* Описание */}
+            {/* Колонка 3: Описание */}
             <GridItem display="flex" alignItems="center">
-              <Text fontSize="sm" color="gray.500" lineClamp="2" maxWidth="300px">
+              <Text 
+                fontSize="sm" 
+                color="gray.500" 
+                maxWidth="240px"
+                lineHeight="1.4"
+              >
                 {ach.description}
               </Text>
             </GridItem>
 
-            {/* Статус */}
+            {/* Колонка 4: Статус */}
             <GridItem display="flex" alignItems="center" justifyContent="center">
-              <BadgeStatus status={ach.status} />
+              <StatusBadge status={ach.status} />
             </GridItem>
 
-            {/* Кнопка */}
+            {/* Колонка 5: Действия */}
             <GridItem display="flex" alignItems="center" justifyContent="flex-end">
-              <Button size="xs" colorPalette="indigo" onClick={() => onIssue(ach.id)}>
+              <Button
+                size="xs"
+                colorPalette="indigo"
+                onClick={() => onIssue(ach)}
+                _hover={{ bg: 'indigo.50' }}
+              >
                 Выдать
               </Button>
             </GridItem>

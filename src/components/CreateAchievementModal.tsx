@@ -14,9 +14,9 @@ export const CreateAchievementModal = ({
   onSubmit,
 }: CreateAchievementModalProps) => {
   const [formData, setFormData] = useState<Omit<Achievement, 'id'>>({
-    title: '',
+    name: '',
     description: '',
-    isStandard: false,
+    iconColor: '#4A88F0',
     status: 'draft'
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'error'>('idle');
@@ -24,7 +24,7 @@ export const CreateAchievementModal = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.title.trim()) {
+    if (!formData.name.trim()) {
       setErrorMsg('Название обязательно');
       return;
     }
@@ -33,9 +33,9 @@ export const CreateAchievementModal = ({
     try {
       await onSubmit(formData);
       setFormData({
-        title: '',
+        name: '',
         description: '',
-        isStandard: false,
+        iconColor: '#4A88F0',
         status: 'draft'
       });
       setStatus('idle');
@@ -69,8 +69,8 @@ export const CreateAchievementModal = ({
                 <Field.Root required>
                   <Field.Label>Название</Field.Label>
                   <Input
-                    value={formData.title}
-                    onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="Мастер кода"
                     disabled={status === 'loading'}
                   />

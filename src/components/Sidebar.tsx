@@ -37,7 +37,7 @@ export const Sidebar = () => {
             justifyContent="start"
             size="md"
             borderRadius="lg"
-            _hover={item.active ? { bg: 'indigo.50' } : { bg: 'gray.50' }}
+            _hover={item.active ? { bg: 'primary.bg' } : { bg: 'gray.50' }}
           >
             {item.label}
           </Button>
