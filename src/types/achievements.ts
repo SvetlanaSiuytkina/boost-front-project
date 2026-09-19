@@ -5,9 +5,10 @@ export interface Achievement {
   name: string;
   description: string;
   status: AchievementStatus;
-  iconColor: string;
+  iconColor?: string;
+  icon?: string;
 }
-//факт выдачи ачивки сотруднику (Achievement Award)
+
 export interface AchievementAward {
   id: string;
   achievementId: string | number;

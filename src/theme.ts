@@ -11,6 +11,21 @@ const config = defineConfig({
           600: { value: '#0044CC' },
           700: { value: '#003399' },
         },
+        success: {
+          50: { value: '#ECFDF5' },
+          100: { value: '#D1FAE5' },
+          500: { value: '#10B981' },
+        },
+        warning: {
+          50: { value: '#FFFBED' },
+          100: { value: '#FDE68A' },
+          500: { value: '#F59E0B' },
+        },
+        danger: {
+          50: { value: '#FEF2F2' },
+          100: { value: '#FECACA' },
+          500: { value: '#EF4444' },
+        },
       },
       fonts: {
         heading: { value: 'Inter, system-ui, sans-serif' },
