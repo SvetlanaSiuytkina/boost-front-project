@@ -1,6 +1,9 @@
-import { Dialog, Box, Button, Field } from '@chakra-ui/react';
+import { Dialog, Button } from '@chakra-ui/react';
 import { useState } from 'react';
-import type { Employee } from '../mocks/employees';
+import type { Employee } from '../../types/achievements';
+
+import { EmployeeSelect } from './EmployeeSelect';
+import { ErrorMessage } from './ErrorMessage';
 
 interface IssueAchievementModalProps {
   open: boolean;
@@ -43,52 +46,29 @@ export const IssueAchievementModal = ({
   };
 
   return (
-    <Dialog.Root open={open} onOpenChange={(details) => onOpenChange(details.open)} size="md">
+    <Dialog.Root
+      open={open}
+      onOpenChange={(details) => onOpenChange(details.open)}
+      size="md"
+    >
       <Dialog.Backdrop />
       <Dialog.Positioner>
         <Dialog.Content>
           <Dialog.Header>
             <Dialog.Title>Выдать ачивку «{achievementName}»</Dialog.Title>
           </Dialog.Header>
+
           <Dialog.Body>
-            {status === 'error' && (
-              <Box
-                mb={4}
-                p={3}
-                bg="red.50"
-                color="red.600"
-                borderRadius="md"
-                fontSize="sm"
-              >
-                {errorMsg}
-              </Box>
-            )}
-            <Field.Root required>
-              <Field.Label>Сотрудник</Field.Label>
-              <select
-                value={selectedEmployeeId}
-                onChange={(e) => setSelectedEmployeeId(e.target.value)}
-                disabled={status === 'loading'}
-                style={{
-                  width: '100%',
-                  padding: '8px 12px',
-                  borderRadius: '8px',
-                  border: '1px solid #E2E8F0',
-                  fontSize: '14px',
-                  backgroundColor: 'white',
-                  outline: 'none',
-                  cursor: 'pointer',
-                }}
-              >
-                <option value="" disabled>Выберите сотрудника</option>
-                {employees.map((emp) => (
-                  <option key={emp.id} value={emp.id}>
-                    {emp.name}{emp.department ? ` (отдел: ${emp.department})` : ''}
-                  </option>
-                ))}
-              </select>
-            </Field.Root>
+            {status === 'error' && <ErrorMessage message={errorMsg} />}
+
+            <EmployeeSelect
+              selectedEmployeeId={selectedEmployeeId}
+              employees={employees}
+              onChange={setSelectedEmployeeId}
+              isDisabled={status === 'loading'}
+            />
           </Dialog.Body>
+
           <Dialog.Footer>
             <Button
               variant="ghost"
@@ -100,6 +80,7 @@ export const IssueAchievementModal = ({
             <Button
               onClick={handleSubmit}
               colorPalette="indigo"
+              loading={status === 'loading'}
               disabled={status === 'loading' || !selectedEmployeeId}
             >
               {status === 'loading' ? 'Выдача...' : 'Выдать'}

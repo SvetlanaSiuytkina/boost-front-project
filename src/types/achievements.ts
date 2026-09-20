@@ -25,3 +25,10 @@ export interface ApiResponse<T> {
   };
   data?: T;
 }
+
+export interface Employee {
+  id: string;
+  name: string;
+  department?: string;
+  avatar?: string;
+}

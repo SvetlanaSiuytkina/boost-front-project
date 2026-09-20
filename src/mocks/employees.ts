@@ -1,10 +1,4 @@
-//предоставляет тестовых сотрудников, пока нет доступа к Sigma
-export interface Employee {
-  id: string;
-  name: string;
-  department?: string;
-  avatar?: string;
-}
+import type { Employee } from '../types/achievements';
 
 export const MOCK_EMPLOYEES: Employee[] = [
   { id: 'emp-1', name: 'Мария Иванова', department: 'HR' },
