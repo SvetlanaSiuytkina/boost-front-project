@@ -39,5 +39,8 @@ jobs:
           path: ./dist
 
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: dist
+          base: '/boost-front-project/'

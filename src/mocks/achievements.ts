@@ -7,7 +7,7 @@ export const MOCK_ACHIEVEMENTS: Achievement[] = [
     description: 'Выдаётся за первое выполненное задание', 
     status: 'active', 
     iconColor: '#10B981',
-    icon: '/icons/medals/first.svg' 
+    icon: 'icons/medals/first.svg' 
   },
   { 
     id: '2', 
@@ -15,7 +15,7 @@ export const MOCK_ACHIEVEMENTS: Achievement[] = [
     description: 'Три задачи подряд сданы в срок', 
     status: 'active', 
     iconColor: '#3B82F6',
-    icon: '/icons/medals/exactly-time.svg' 
+    icon: 'icons/medals/exactly-time.svg' 
   },
   { 
     id: '3', 
@@ -23,7 +23,7 @@ export const MOCK_ACHIEVEMENTS: Achievement[] = [
     description: 'Подтверждённый вклад в результат команды', 
     status: 'active', 
     iconColor: '#8B5CF6',
-    icon: '/icons/medals/team-player.svg' 
+    icon: 'icons/medals/team-player.svg' 
   },
   { 
     id: '4', 
@@ -31,7 +31,7 @@ export const MOCK_ACHIEVEMENTS: Achievement[] = [
     description: 'Работа принята без существенных доработок', 
     status: 'active', 
     iconColor: '#F59E0B',
-    icon: '/icons/medals/quality-mark.svg' 
+    icon: 'icons/medals/quality-mark.svg' 
   },
   { 
     id: '5', 
@@ -39,7 +39,7 @@ export const MOCK_ACHIEVEMENTS: Achievement[] = [
     description: 'Идея принята командой или куратором', 
     status: 'draft', 
     iconColor: '#14B8A6',
-    icon: '/icons/medals/idea-generator.svg' 
+    icon: 'icons/medals/idea-generator.svg' 
   },
   { 
     id: '6', 
@@ -47,6 +47,6 @@ export const MOCK_ACHIEVEMENTS: Achievement[] = [
     description: 'Быстрый старт в первую неделю', 
     status: 'draft', 
     iconColor: '#EF4444',
-    icon: '/icons/medals/starting-sprint.svg' 
+    icon: 'icons/medals/starting-sprint.svg' 
   },
 ];

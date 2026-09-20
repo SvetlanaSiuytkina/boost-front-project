@@ -1,19 +1,19 @@
 import { Box, Stack, Button, Text, Image, Flex } from '@chakra-ui/react';
 
 const navItems = [
-  { label: 'Главная', icon: '/icons/main/home.svg', active: false },
-  { label: 'Аналитика', icon: '/icons/main/pie-chart.svg', active: false },
-  { label: 'Орг. структура', icon: '/icons/main/case.svg', active: false },
-  { label: 'Сотрудники', icon: '/icons/main/users.svg', active: false },
-  { label: 'Boost', icon: '/icons/main/star.svg', active: true },
-  { label: 'Опросы', icon: '/icons/main/question.svg', active: false },
-  { label: 'Поиск', icon: '/icons/main/leading.svg', active: false },
-  { label: 'Справка', icon: '/icons/main/about.svg', active: false },
+  { label: 'Главная', icon: 'icons/main/home.svg', active: false },
+  { label: 'Аналитика', icon: 'icons/main/pie-chart.svg', active: false },
+  { label: 'Орг. структура', icon: 'icons/main/case.svg', active: false },
+  { label: 'Сотрудники', icon: 'icons/main/users.svg', active: false },
+  { label: 'Boost', icon: 'icons/main/star.svg', active: true },
+  { label: 'Опросы', icon: 'icons/main/question.svg', active: false },
+  { label: 'Поиск', icon: 'icons/main/leading.svg', active: false },
+  { label: 'Справка', icon: 'icons/main/about.svg', active: false },
 ];
 
 const footerItems = [
-  { label: 'Уведомления', icon: '/icons/main/bell.svg' },
-  { label: 'Настройки', icon: '/icons/main/settings.svg' },
+  { label: 'Уведомления', icon: 'icons/main/bell.svg' },
+  { label: 'Настройки', icon: 'icons/main/settings.svg' },
 ];
 
 export const Sidebar = () => {
@@ -32,7 +32,7 @@ export const Sidebar = () => {
        {/* Логотип */}
       <Box p={6} borderBottom="1px" borderColor="border">
         <Image 
-          src="/icons/main/logo.svg" 
+          src="icons/main/logo.svg" 
           alt="СИГМА" 
           objectFit="contain" 
           w="auto" 
@@ -126,7 +126,7 @@ export const Sidebar = () => {
             flexShrink={0}
           >
             <Image 
-              src="/icons/main/avatar.svg" 
+              src="icons/main/avatar.svg" 
               alt="Avatar" 
               objectFit="contain" 
               w="24px" 
