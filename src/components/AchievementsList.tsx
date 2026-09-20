@@ -53,7 +53,7 @@ const MOCK_ACHIEVEMENTS: Achievement[] = [
 ];
 
 interface AchievementsListProps {
-  achievements: Achievement | null | undefined;
+  achievements: Achievement[] | null | undefined;
   onIssue: (achievement: Achievement) => void;
   onSearchChange?: (query: string) => void;
 }

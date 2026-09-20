@@ -6,7 +6,7 @@ export const MOCK_ACHIEVEMENTS: Achievement[] = [
     name: 'Первый шаг', 
     description: 'Выдаётся за первое выполненное задание', 
     status: 'active', 
-    iconColor: '#10B981', // Зеленый для первого шага
+    iconColor: '#10B981',
     icon: '/icons/medals/first.svg' 
   },
   { 
@@ -14,7 +14,7 @@ export const MOCK_ACHIEVEMENTS: Achievement[] = [
     name: 'Точно в срок', 
     description: 'Три задачи подряд сданы в срок', 
     status: 'active', 
-    iconColor: '#3B82F6', // Синий для "Точно в срок" (как просили)
+    iconColor: '#3B82F6',
     icon: '/icons/medals/exactly-time.svg' 
   },
   { 
@@ -22,7 +22,7 @@ export const MOCK_ACHIEVEMENTS: Achievement[] = [
     name: 'Командный игрок', 
     description: 'Подтверждённый вклад в результат команды', 
     status: 'active', 
-    iconColor: '#8B5CF6', // Фиолетовый для "Командный игрок" (как просили)
+    iconColor: '#8B5CF6',
     icon: '/icons/medals/team-player.svg' 
   },
   { 
@@ -30,7 +30,7 @@ export const MOCK_ACHIEVEMENTS: Achievement[] = [
     name: 'Знак качества', 
     description: 'Работа принята без существенных доработок', 
     status: 'active', 
-    iconColor: '#F59E0B', // Оранжевый для качества
+    iconColor: '#F59E0B',
     icon: '/icons/medals/quality-mark.svg' 
   },
   { 
@@ -38,7 +38,7 @@ export const MOCK_ACHIEVEMENTS: Achievement[] = [
     name: 'Генератор идей', 
     description: 'Идея принята командой или куратором', 
     status: 'draft', 
-    iconColor: '#14B8A6', // Бирюзовый для идей
+    iconColor: '#14B8A6',
     icon: '/icons/medals/idea-generator.svg' 
   },
   { 
@@ -46,7 +46,7 @@ export const MOCK_ACHIEVEMENTS: Achievement[] = [
     name: 'Стартовый рывок', 
     description: 'Быстрый старт в первую неделю', 
     status: 'draft', 
-    iconColor: '#EF4444', // Красный для рывка
+    iconColor: '#EF4444',
     icon: '/icons/medals/starting-sprint.svg' 
   },
 ];
