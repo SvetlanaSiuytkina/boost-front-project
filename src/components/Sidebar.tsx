@@ -29,16 +29,16 @@ export const Sidebar = () => {
       display="flex"
       flexDirection="column"
     >
-      {/* Логотип */}
+       {/* Логотип */}
       <Box p={6} borderBottom="1px" borderColor="border">
-        <Text 
-          fontWeight="bold" 
-          fontSize="xl" 
-          color="primary.text" 
-          textTransform="uppercase"
-        >
-          СИГМА
-        </Text>
+        <Image 
+          src="/icons/main/logo.svg" 
+          alt="СИГМА" 
+          objectFit="contain" 
+          w="auto" 
+          h="40px"
+          style={{ display: 'block' }} 
+        />
       </Box>
 
       <Box flex="1" display="flex" flexDirection="column" overflowY="auto">
