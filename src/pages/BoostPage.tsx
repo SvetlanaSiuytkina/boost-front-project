@@ -60,7 +60,13 @@ export const BoostPage = () => {
     return (
       <Box color="primary.text" bg="background" minH="100vh">
         <Sidebar />
-        <Box ml="260px" width="calc(100% - 260px)">
+        <Box
+          ml={{ base: 0, lg: '260px' }}
+          pt={{ base: 16, lg: 4 }}
+          pb={8}
+          width={{ base: '100%', lg: 'calc(100% - 260px)' }}
+          px={{ base: 3, md: 4, lg: 6 }}
+        >
           <LoadingState />
         </Box>
       </Box>
@@ -72,11 +78,13 @@ export const BoostPage = () => {
     return (
       <Box color="primary.text" bg="background" minH="100vh">
         <Sidebar />
-        <Box ml="260px" width="calc(100% - 260px)" p={4} pt={8}>
-          <BoostHeader
-            title="Ачивки"
-            subtitle="Шаблоны достижений и ручная выдача сотрудникам"
-          />
+        <Box
+          ml={{ base: 0, lg: '260px' }}
+          pt={{ base: 16, lg: 4 }}
+          pb={8}
+          width={{ base: '100%', lg: 'calc(100% - 260px)' }}
+          px={{ base: 3, md: 4, lg: 6 }}
+        >
           <Box mt={8}>
             <ErrorState message={error} onRetry={loadData} />
           </Box>
@@ -90,11 +98,13 @@ export const BoostPage = () => {
     return (
       <Box color="primary.text" bg="background" minH="100vh">
         <Sidebar />
-        <Box ml="260px" width="calc(100% - 260px)" p={4} pt={8}>
-          <BoostHeader
-            title="Ачивки"
-            subtitle="У вас нет прав для просмотра этого раздела"
-          />
+          <Box
+            ml={{ base: 0, lg: '260px' }}
+            pt={{ base: 16, lg: 4 }}
+            pb={8}
+            width={{ base: '100%', lg: 'calc(100% - 260px)' }}
+            px={{ base: 3, md: 4, lg: 6 }}
+          >
           <Box mt={8}>
             <NoAccessState />
           </Box>
@@ -109,8 +119,14 @@ export const BoostPage = () => {
   return (
     <Box color="primary.text" bg="background" minH="100vh" overflow="auto">
       <Sidebar />
-      <Box ml="260px" pt={4} pb={8} width="calc(100% - 260px)">
-        <Box maxWidth="container.xl" width="100%" mx="auto" px={4}>
+      <Box
+        ml={{ base: 0, lg: '260px' }}
+        pt={{ base: 16, lg: 4 }}
+        pb={8}
+        width={{ base: '100%', lg: 'calc(100% - 260px)' }}
+        px={{ base: 3, md: 4, lg: 6 }}
+      >
+        <Box maxWidth="container.xl" width="100%" mx="auto" px={{ base: 2, md: 4 }}>
           <Stack gap={6} mb={8}>
             <BoostHeader
               title="Ачивки"

@@ -18,16 +18,24 @@ export const CreateAchievementPage = () => {
   return (
     <Box color="primary.text" bg="background" minH="100vh">
       <Sidebar />
-      <Box ml="260px" width="calc(100% - 260px)">
+      <Box
+        ml={{ base: 0, lg: '260px' }}
+        width={{ base: '100%', lg: 'calc(100% - 260px)' }}
+      >
         <TopBar searchValue={searchValue} onSearchChange={setSearchValue} />
 
-        <Box pt={8} pb={8} px={6}>
+        <Box pt={{ base: 4, md: 8 }} pb={8} px={{ base: 3, md: 4, lg: 6 }}>
           <Box maxWidth="container.xl" width="100%" mx="auto">
-            <Box mb={8}>
-              <Heading size="xl" color="primary.text" mb={1}>
+            <Box mb={{ base: 4, md: 8 }}>
+              <Heading
+                as="h1"
+                color="primary.text"
+                mb={1}
+                fontSize={{ base: '2xl', md: '3xl', lg: '4xl' }}
+              >
                 Создание ачивки
               </Heading>
-              <Text color="secondary.text">
+              <Text color="secondary.text" fontSize={{ base: 'sm', md: 'md' }}>
                 Заполните название и описание, выберите изображение и проверьте предпросмотр
               </Text>
             </Box>

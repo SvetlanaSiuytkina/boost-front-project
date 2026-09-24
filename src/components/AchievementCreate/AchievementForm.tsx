@@ -144,7 +144,11 @@ export const AchievementForm = ({
   const getError = (field: string) => errors.find((e) => e.field === field)?.message;
 
   return (
-    <Box display="grid" gridTemplateColumns={{ base: '1fr', lg: '1fr 340px' }} gap={8}>
+    <Box
+      display="grid"
+      gridTemplateColumns={{ base: '1fr', lg: '1fr 340px' }}
+      gap={{ base: 4, lg: 8 }}
+    >
       {/* ЛЕВАЯ КОЛОНКА */}
       <form onSubmit={handleSubmit}>
         <VStack gap={6} align="stretch">
@@ -200,7 +204,7 @@ export const AchievementForm = ({
       </form>
 
       {/* ПРАВАЯ КОЛОНКА */}
-      <Box display={{ base: 'none', lg: 'block' }}>
+      <Box display={{ base: 'block', lg: 'block' }}>
         {renderPreview(previewState)}
       </Box>
     </Box>

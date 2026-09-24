@@ -12,8 +12,8 @@ export const TopBar = ({ searchValue, onSearchChange }: TopBarProps) => {
     <Flex
       as="header"
       align="center"
-      justify="flex-end"
-      px={8}
+      justify={{ base: 'flex-start', md: 'flex-end' }}
+      px={{ base: 4, md: 6, lg: 8 }}
       py={3}
       borderBottom="1px"
       borderColor="border"
@@ -21,10 +21,18 @@ export const TopBar = ({ searchValue, onSearchChange }: TopBarProps) => {
       position="sticky"
       top={0}
       zIndex={5}
+      gap={3}
     >
-      <Flex align="center" gap={3}>
-        {/* Поиск */}
-        <Box position="relative" w="280px">
+      {/* Отступ под кнопку-бургер на мобилке */}
+      <Box display={{ base: 'block', lg: 'none' }} w="40px" flexShrink={0} />
+
+      <Flex align="center" gap={{ base: 2, md: 3 }} flex={{ base: '1', md: '0 0 auto' }}>
+        <Box
+          position="relative"
+          w={{ base: '100%', md: '280px' }}
+          maxW={{ base: '100%', md: '280px' }}
+          flex={{ base: '1', md: '0 0 auto' }}
+        >
           <Box
             position="absolute"
             left="10px"
@@ -49,11 +57,19 @@ export const TopBar = ({ searchValue, onSearchChange }: TopBarProps) => {
             size="sm"
             value={searchValue}
             onChange={(e) => onSearchChange(e.target.value)}
+            w="100%"
           />
         </Box>
 
-        {/* Аватар */}
-        <Box w="32px" h="32px" borderRadius="full" overflow="hidden" bg="components.bg">
+        <Box
+          w="32px"
+          h="32px"
+          borderRadius="full"
+          overflow="hidden"
+          bg="components.bg"
+          flexShrink={0}
+          display={{ base: 'none', md: 'block' }}
+        >
           <Image
             src={`${BASE_URL}icons/main/avatar.svg`}
             alt="Профиль"

@@ -34,7 +34,6 @@ export const AchievementPreview = ({
       borderColor="border"
       borderRadius="lg"
       p={5}
-      position="sticky"
       top="20px"
     >
       <Text fontWeight="bold" fontSize="md" color="primary.text" mb={4}>
