@@ -1,5 +1,4 @@
-// src/components/AchievementsList/AchievementsList.tsx
-import { Box, Text, Stack } from '@chakra-ui/react';
+import { Box, Stack } from '@chakra-ui/react';
 import type { Achievement } from '../../types/achievements';
 import { AchievementsSearch } from './AchievementsSearch';
 import { AchievementsHeader } from './AchievementsHeader';
@@ -22,15 +21,9 @@ export const AchievementsList = ({
   if (!achievements || achievements.length === 0) {
     return (
       <Box p={8} textAlign="center" color="secondary.text">
-        Список достижений пуст
-      </Box>
-    );
-  }
-
-  if (searchQuery && achievements.length === 0) {
-    return (
-      <Box p={8} textAlign="center" color="secondary.text">
-        По запросу «{searchQuery}» ничего не найдено.
+        {searchQuery
+          ? `По запросу «${searchQuery}» ничего не найдено.`
+          : 'Список достижений пуст'}
       </Box>
     );
   }
