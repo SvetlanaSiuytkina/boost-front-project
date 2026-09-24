@@ -8,9 +8,20 @@ interface AchievementRowProps {
   onIssue: (achievement: Achievement) => void;
 }
 
+const resolveIconSrc = (src: string | undefined): string => {
+  const fallback = 'icons/medals/default.svg';
+  if (!src) {
+    return `${import.meta.env.BASE_URL}${fallback}`;
+  }
+  if (src.startsWith('blob:') || src.startsWith('http') || src.startsWith('data:')) {
+    return src;
+  }
+  const clean = src.startsWith('/') ? src.slice(1) : src;
+  return `${import.meta.env.BASE_URL}${clean}`;
+};
+
 export const AchievementRow = ({ achievement, onIssue }: AchievementRowProps) => {
-  const defaultIcon = '/icons/medals/default.svg';
-  const iconSrc = achievement.icon || defaultIcon;
+  const iconSrc = resolveIconSrc(achievement.icon);
 
   return (
     <Box
@@ -25,7 +36,6 @@ export const AchievementRow = ({ achievement, onIssue }: AchievementRowProps) =>
       _hover={{ bg: 'components.bg' }}
       transition="background-color 0.2s"
     >
-      {/* 1. Иконка */}
       <Box w="48px" h="48px" display="flex" alignItems="center" justifyContent="center">
         <Image
           src={iconSrc}
@@ -37,19 +47,12 @@ export const AchievementRow = ({ achievement, onIssue }: AchievementRowProps) =>
         />
       </Box>
 
-      {/* 2. Название */}
       <Box flex="1" minW="0">
-        <Text
-          fontWeight="bold"
-          color="primary.text"
-          fontSize="md"
-          lineHeight="1.4"
-        >
+        <Text fontWeight="bold" color="primary.text" fontSize="md" lineHeight="1.4">
           {achievement.name}
         </Text>
       </Box>
 
-      {/* 3. Описание */}
       <Box flex="1" minW="0" maxW="300px">
         <Box
           fontSize="sm"
@@ -64,12 +67,10 @@ export const AchievementRow = ({ achievement, onIssue }: AchievementRowProps) =>
         </Box>
       </Box>
 
-      {/* 4. Статус */}
       <Box w="120px" textAlign="center">
         <StatusBadge status={achievement.status} />
       </Box>
 
-      {/* 5. Действия */}
       <Box w="160px" textAlign="right">
         <Flex align="center" gap={2} justify="flex-end">
           <Button

@@ -13,38 +13,46 @@
 --- 
 ## 📁 Структура проекта (Frontend)
 
-- `boost-front/` - корень проекта
-  - `.gitignore` - игнорируемые файлы git
-  - `.eslint.config.js` - конфигурация линтера
-  - `index.html` - точка входа в браузер (`div#root`)
-  - `package.json` - зависимости и скрипты (`dev`, `build`, `lint`)
-  - `package-lock.json` - зафиксированные версии пакетов
-  - `tsconfig.json` - базовые настройки TypeScript
-  - `tsconfig.app.json` - настройки TS для приложения
-  - `tsconfig.node.json` - настройки TS для Node.js скриптов
-  - `vite.config.ts` - конфигурация Vite (прокси на `/api`)
-  - `public/` - статические файлы (иконки, favicon)
-  - `src/` - исходный код
-    - `main.tsx` - точка входа React
-    - `App.tsx` - корневой компонент (Sidebar + Main)
-    - `components/` - переиспользуемые UI-компоненты
-      - `AchievementsList.tsx` - список ачивок (Grid, строки)
-      - `BadgeStatus.tsx` - бейдж статуса (активна/черновик)
-      - `CreateAchievementModal.tsx` - модальное окно создания
-      - `Sidebar.tsx` - боковая панель навигации (демо)
-      - `IssueAchievementModal.tsx` - модальное окно для выдачи ачивки сотруднику
-    - `api/` - слой API
-      - `boostApi.ts` - функции для взаимодействия с бэкендом
-    - `pages/` - страницы приложения
-      - `BoostPage.tsx` - траница модуля Boost: заголовок, поиск/фильтры, список ачивок, модальные окна, уведомления
-    - `hooks/` - кастомные хуки
-      - `useBoostPage.ts` - логика страницы Boost: загрузка данных, управление модальными окнами, обработка создания и выдачи ачивок, уведомления
-    - `mocks/` - демо‑данные для разработки
-      - `achievements.ts` - массив MOCK_ACHIEVEMENTS для отображения списка ачивок без бэкенда
-      - `employees.ts` - массив MOCK_EMPLOYEES для выдачи ачивок (список сотрудников с отделами)
-    - `types/` - TypeScript интерфейсы
-      - `achievements.ts` - типы для ачивок, статусов, наград, ответов API`
-    - `theme/` - кастомная тема Chakra UI: цвета, шрифты, семантические токены
+public/
+  icons/
+    main/       — иконки сайдбара, топбара, логотип
+    library/    — библиотека иконок для ачивок (star, flag, check, ...)
+    medals/     — иконки для готовых ачивок из моков
+
+src/
+  api/              — клиент для запросов к бэкенду (сейчас на моках)
+  components/
+    AchievementCreate/   — форма создания ачивки
+      AchievementForm.tsx        — главный компонент (состояние + компоновка)
+      AchievementForm.types.ts   — типы, константы
+      AchievementPreview.tsx     — превью справа
+      IconLibrary.tsx            — сетка иконок
+      FileUploadTab.tsx          — таб «Загрузить файл»
+      ImageField.tsx             — блок «Изображение» с табами
+      NameField.tsx              — поле «Название»
+      DescriptionField.tsx       — поле «Описание»
+      ColorField.tsx             — палитра цветов
+      FormHeaderAlert.tsx        — верхний алерт валидации
+      index.ts                   — реэкспорт
+    AchievementsList/    — таблица со списком ачивок
+    IssueAchievementPanel/ — панель выдачи ачивки сотруднику
+    Sidebar/             — сайдбар с навигацией
+    TopBar/              — верхняя панель с поиском
+    BoostStates.tsx      — состояния страницы (загрузка, ошибка, нет прав, пусто)
+  hooks/
+    useBoostPage.ts      — вся логика Boost-страницы
+  mocks/
+    achievements.ts      — мок-данные ачивок
+    employees.ts         — мок-данные сотрудников
+    icons.ts             — библиотека иконок и палитра цветов
+  pages/
+    BoostPage.tsx           — страница списка ачивок (/boost)
+    CreateAchievementPage.tsx — страница создания (/boost/create)
+  types/
+    achievements.ts      — типы Achievement, ValidationError, Employee
+  theme.ts               — кастомная тема Chakra
+  App.tsx                — роутинг
+  main.tsx               — точка входа
 
 ---
 

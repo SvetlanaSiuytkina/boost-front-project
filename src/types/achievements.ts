@@ -4,17 +4,27 @@ export interface Achievement {
   id: string | number;
   name: string;
   description: string;
+  criterion?: string;
   status: AchievementStatus;
   iconColor?: string;
   icon?: string;
+  createdAt?: string;
+  author?: string;
+  awardedCount?: number;
 }
 
-export interface AchievementAward {
-  id: string;
-  achievementId: string | number;
-  employeeId: string;
-  awardedAt: Date;
-  comment?: string;
+export interface AchievementDraft {
+  name: string;
+  description: string;
+  criterion: string;
+  icon?: File | string;
+  status: AchievementStatus;
+}
+
+export interface ValidationError {
+  field: string;
+  code: string;
+  message: string;
 }
 
 export interface ApiResponse<T> {
@@ -31,4 +41,18 @@ export interface Employee {
   name: string;
   department?: string;
   avatar?: string;
+}
+
+export interface AccessRights {
+  canView: boolean;
+  canCreate: boolean;
+  canIssue: boolean;
+}
+
+export interface AchievementAward {
+  id: string;
+  achievementId: string | number;
+  employeeId: string;
+  awardedAt: Date;
+  comment?: string;
 }

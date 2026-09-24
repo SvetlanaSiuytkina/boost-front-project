@@ -29,13 +29,20 @@ export const NavMenu = ({ onItemClick }: NavMenuProps = {}) => (
           textAlign="left"
           onClick={() => onItemClick?.(item.label)}
         >
-          <Box w="20px" h="20px" display="flex" alignItems="center" justifyContent="center" flexShrink={0}>
-            <Image 
-              src={item.icon} 
-              alt={item.label} 
-              objectFit="contain" 
-              w="full" 
-              h="full" 
+          <Box
+            w="20px"
+            h="20px"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            flexShrink={0}
+          >
+            <Image
+              src={`${import.meta.env.BASE_URL}${item.icon}`}
+              alt={item.label}
+              objectFit="contain"
+              w="full"
+              h="full"
             />
           </Box>
           <Text whiteSpace="nowrap">{item.label}</Text>

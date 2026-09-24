@@ -8,12 +8,14 @@ interface AchievementsListProps {
   achievements: Achievement[] | null | undefined;
   onIssue: (achievement: Achievement) => void;
   onSearchChange?: (query: string) => void;
+  searchQuery?: string;
 }
 
-export const AchievementsList = ({ 
-  achievements, 
-  onIssue, 
-  onSearchChange 
+export const AchievementsList = ({
+  achievements,
+  onIssue,
+  onSearchChange,
+  searchQuery = '',
 }: AchievementsListProps) => {
   if (!achievements || achievements.length === 0) {
     return (
@@ -23,30 +25,43 @@ export const AchievementsList = ({
     );
   }
 
+  // Если поиск не дал результатов
+  if (achievements.length === 0 && searchQuery) {
+    return (
+      <Box p={8} textAlign="center" color="secondary.text">
+        По запросу «{searchQuery}» ничего не найдено.
+      </Box>
+    );
+  }
+
   return (
     <Box bg="white" border="1px" borderColor="border" borderRadius="lg" boxShadow="sm" overflow="hidden">
       {/* --- HEADER (Поиск и фильтр) --- */}
-      <Box 
-        p={4} 
-        bg="components.bg" 
-        borderBottom="1px" 
-        borderColor="border" 
-        display="flex" 
-        gap={4} 
-        alignItems="center" 
+      <Box
+        p={4}
+        bg="components.bg"
+        borderBottom="1px"
+        borderColor="border"
+        display="flex"
+        gap={4}
+        alignItems="center"
       >
         <AchievementsSearch onSearchChange={onSearchChange} />
-        <Text fontSize="xs" color="secondary.text" textTransform="uppercase">Статус</Text>
+        <Text fontSize="xs" color="secondary.text" textTransform="uppercase">
+          Статус
+        </Text>
       </Box>
+
       {/* --- ЗАГОЛОВКИ КОЛОНОК --- */}
       <AchievementsHeader />
+
       {/* --- СПИСОК ЭЛЕМЕНТОВ --- */}
       <Box>
         {achievements.map((ach) => (
-          <AchievementRow 
-            key={ach.id} 
-            achievement={ach} 
-            onIssue={onIssue} 
+          <AchievementRow
+            key={ach.id}
+            achievement={ach}
+            onIssue={onIssue}
           />
         ))}
       </Box>

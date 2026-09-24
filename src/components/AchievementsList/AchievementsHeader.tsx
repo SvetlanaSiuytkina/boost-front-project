@@ -27,6 +27,11 @@ export const AchievementsHeader = () => {
           Описание
         </Text>
       </Box>
+      <Box w="80px" textAlign="center">
+        <Text color="secondary.text" fontSize="xs" textTransform="uppercase" letterSpacing="wide">
+          Выдано
+        </Text>
+      </Box>
       <Box w="120px" textAlign="center">
         <Text color="secondary.text" fontSize="xs" textTransform="uppercase" letterSpacing="wide">
           Статус

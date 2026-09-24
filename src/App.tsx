@@ -1,14 +1,16 @@
-import { Sidebar } from './components/Sidebar/Sidebar';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { BoostPage } from './pages/BoostPage';
+import { CreateAchievementPage } from './pages/CreateAchievementPage';
 
 function App() {
   return (
-    <div style={{ display: 'flex' }}>
-      <Sidebar />
-      <main style={{ flex: 1, minWidth: 0 }}>
-        <BoostPage />
-      </main>
-    </div>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <Routes>
+        <Route path="/" element={<Navigate to="/boost" replace />} />
+        <Route path="/boost" element={<BoostPage />} />
+        <Route path="/boost/create" element={<CreateAchievementPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

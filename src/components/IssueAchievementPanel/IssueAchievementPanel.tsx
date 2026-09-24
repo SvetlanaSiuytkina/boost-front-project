@@ -44,6 +44,7 @@ export const IssueAchievementPanel = ({
 
     try {
       await new Promise((r) => setTimeout(r, 500));
+      
       // Сценарий A-3a: Сотрудник не найден
       const emp = employees.find((e) => e.id === selectedEmployeeId);
       if (!emp) {
@@ -51,13 +52,16 @@ export const IssueAchievementPanel = ({
         setErrorMsg('Сотрудник не найден в системе. Проверьте данные.');
         return;
       }
+
       // Сценарий A-3b: Предупреждение о повторной выдаче (эмуляция)
-      const isRandomlyAlreadyIssued = Math.random() < 0.3;
-      if (isRandomlyAlreadyIssued) {
+      // это должно приходить с бэкенда
+      const isAlreadyIssued = false; // Заглушка
+      if (isAlreadyIssued) {
         setStatus('already-issued');
         setErrorMsg(`Ачивка «${achievementName}» уже выдана этому сотруднику.`);
         return;
       }
+
       // Успешная выдача
       await onSubmit(selectedEmployeeId);
       onOpenChange(false);
@@ -65,6 +69,7 @@ export const IssueAchievementPanel = ({
       setSelectedEmployeeId('');
     } catch (err) {
       console.error(err);
+      // Сценарий A-3e: Ошибка сохранения
       setStatus('error');
       setErrorMsg('Не удалось выдать ачивку. Попробуйте позже.');
     }
@@ -91,10 +96,8 @@ export const IssueAchievementPanel = ({
             zIndex: 1000,
           }}
         >
-          {/* Шапка панели */}
           <PanelHeader achievementName={achievementName} />
 
-          {/* Тело панели */}
           <Box p={6} flex="1" overflowY="auto">
             <Stack gap={6}>
               <ErrorAlerts status={status} errorMsg={errorMsg} />
@@ -114,7 +117,7 @@ export const IssueAchievementPanel = ({
               </Text>
             </Stack>
           </Box>
-          {/* Футер панели */}
+          
           <Box p={6} borderTop="1px" borderColor="border" bg="components.bg">
             <Stack gap={3}>
               <Button
@@ -126,7 +129,7 @@ export const IssueAchievementPanel = ({
                 Отмена
               </Button>
               <Button
-                colorPalette="indigo"
+                colorPalette="blue"
                 onClick={handleSubmit}
                 loading={status === 'loading'}
                 disabled={status === 'loading'}
